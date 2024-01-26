@@ -78,6 +78,8 @@ windows
 mac
 ./server -c 4096 --host 0.0.0.0 -t 16 --mlock -m ./models/codellama-13b-instruct.Q4_K_M.gguf
 
+./server -c 4096 --host 0.0.0.0 -t 16 --mlock -m /Users/orhancavus/Development/Python/ml_ai_ds/my_models/TheBloke/LLama2-7B-chat-GGUF/llama-2-7b-chat.Q4_K_M.gguf
+
 ```bash
 # config your ggml model path
 # make sure it is gguf v2
@@ -85,4 +87,13 @@ mac
 
 export MODEL=[path to your llama.cpp ggml models]]/[ggml-model-name]]Q4_0.gguf
 python3 -m llama_cpp.server --model $MODEL  --n_gpu_layers 1
+```
+
+## Run as client
+
+```bash
+~/…/server  master  ⬆  8✎  %  pwd
+/Users/orhancavus/Development/Python/ml_ai_ds/llama.cpp/examples/server
+ ~/…/server  master  ⬆  8✎  %  node chat.mjs
+
 ```
