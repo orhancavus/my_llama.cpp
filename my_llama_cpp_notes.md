@@ -55,32 +55,19 @@
 
 ./main -m ./models/TheBloke_wizardLM-7B-GGML/wizardLM-7B.ggmlv3.q4_0.gguf.bin -t 4 -c 2048 -n 2048 --color -i --reverse-prompt 'Human:' -p 'Human:'
 
-
 huggingface-cli download TheBloke/CodeLlama-13B-Instruct-GGUF codellama-13b-instruct.q4_K_M.gguf --local-dir . --local-dir-use-symlinks False
 
 rsync -ah --progress ggml-model-gpt4all-falcon-q4_0.bin ./models
-
 
 ./convert-llama-ggml-to-gguf.py --eps 1e-5 -i ./models/ggml-model-gpt4all-falcon-q4_0.bin -o ./models/ggml-model-gpt4all-falcon-q4_0.gguf.bin
 
 ```
 
-## Run as API sersver
+## Run as API server
 
 ```bash
-start_my_vicuna_api.sh
-/Volumes/Media-A-2-100/ext_projects/ml_ai/llama.cpp/examples/server
-```
-
-windows
-.\server.exe -c 4096 --host 0.0.0.0 -t 16 --mlock -m models\meta\llama\codellama-7b-instruct.Q8_0.gguf
-
-mac
 ./server -c 4096 --host 0.0.0.0 -t 16 --mlock -m ./models/codellama-13b-instruct.Q4_K_M.gguf
 
-./server -c 4096 --host 0.0.0.0 -t 16 --mlock -m /Users/orhancavus/Development/Python/ml_ai_ds/my_models/TheBloke/LLama2-7B-chat-GGUF/llama-2-7b-chat.Q4_K_M.gguf
-
-```bash
 # config your ggml model path
 # make sure it is gguf v2
 # make sure it is q4_0
@@ -92,9 +79,7 @@ python3 -m llama_cpp.server --model $MODEL  --n_gpu_layers 1
 ## Run as client
 
 ```bash
-~/…/server  master  ⬆  8✎  %  pwd
-/Users/orhancavus/Development/Python/ml_ai_ds/llama.cpp/examples/server
- ~/…/server  master  ⬆  8✎  %  node chat.mjs
+node chat.mjs
 
 ```
 
@@ -102,4 +87,16 @@ python3 -m llama_cpp.server --model $MODEL  --n_gpu_layers 1
 
 ```bash
 node index.js
+```
+
+## Run with bash model selection as server
+
+```bash
+./select_start_api_server.sh
+```
+
+## Run with bash model selection as chat app
+
+```bash
+./select_start_api_server.sh
 ```
