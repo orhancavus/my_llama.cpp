@@ -97,3 +97,9 @@ python3 -m llama_cpp.server --model $MODEL  --n_gpu_layers 1
  ~/…/server  master  ⬆  8✎  %  node chat.mjs
 
 ```
+
+## Run from Javascript
+
+```bash
+node index.js
+```
