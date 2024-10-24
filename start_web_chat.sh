@@ -1,0 +1,1 @@
+/Users/orhancavus/Development/Python/ml_ai_ds/llama.cpp/server -m /Users/orhancavus/Development/Python/ml_ai_ds/my_models/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/mistral-7b-instruct-v0.1.Q4_K_S.gguf -ngl 27 -c 2048 --port 6589

@@ -2,6 +2,10 @@
 
 # Define variables
 MAIN_EXEC="/Users/orhancavus/Development/Python/ml_ai_ds/llama.cpp/main"
+SERVER_EXEC="/Users/orhancavus/Development/Python/ml_ai_ds/llama.cpp/server"
+SERVER_HOST="127.0.0.1"
+SERVER_PORT="6589"
+
 HOST="0.0.0.0"
 THREADS="16"
 MEMORY="4096"
@@ -41,7 +45,7 @@ else
     echo "1. $(basename "$CONFIG_FILE1")"
     echo "2. $(basename "$CONFIG_FILE2")"
     echo "3. $(basename "$CONFIG_FILE3")"
-    echo "5. $(basename "$CONFIG_FILE4")"
+    echo "4. $(basename "$CONFIG_FILE4")"
     echo
     read -p "Enter your choice (1-4): " CHOICE
 
@@ -69,8 +73,22 @@ fi
 # Print start message
 echo "Starting chat $(basename "$CONFIG_FILE")..."
 
-# Run server with specified parameters
-"$MAIN_EXEC" -c "$MEMORY" -t "$THREADS" -m "$CONFIG_FILE" --color -c 2048 --temp 0.7 --repeat_penalty 1.1 -n -1 --interactive-first -r "### Human:" -p "### Human:"
+# Prompt user to select a config file
+echo "Select a UI:"
+echo "====================="
+echo "1. Terminal - text"
+echo "2. Web ui http://127.0.0.1:6589"
+echo
+read -p "Enter your choice (1-2): " UI_CHOICE
+
+
+if [ $UI_CHOICE -eq 1 ]; then
+    # Run server with specified parameters
+    "$MAIN_EXEC" -c "$MEMORY" -t "$THREADS" -m "$CONFIG_FILE" --color -c 2048 --temp 0.7 --repeat_penalty 1.1 -n -1 --interactive-first -r "### Human:" -p "### Human:"
+else
+    # Run server with web ui
+    "$SERVER_EXEC" -c "$MEMORY" --host "$SERVER_HOST" -t "$THREADS" --mlock -m "$CONFIG_FILE" --port "$SERVER_PORT"
+fi
 
 # Print completion message
 echo "Server started successfully."

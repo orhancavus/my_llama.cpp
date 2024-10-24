@@ -63,3 +63,23 @@ To run the script and select the second configuration file without user interact
 ```bash
 ./select_start_chat_server.sh 
 ```
+
+## Usage from web app with UI selection
+
+```text
+Select a config file:
+=====================
+1. llama-2-7b-chat.Q4_K_M.gguf
+2. wizardLM-7B.ggmlv3.q4_0.gguf.bin
+3. stable-vicuna-13B.ggmlv3.q4_0.gguf.bin
+4. mistral-7b-instruct-v0.1.Q4_K_S.gguf
+
+Enter your choice (1-4): 4
+Starting chat mistral-7b-instruct-v0.1.Q4_K_S.gguf...
+Select a UI:
+=====================
+1. Terminal - text
+2. Web ui http://127.0.0.1:6589
+
+Enter your choice (1-2):
+```

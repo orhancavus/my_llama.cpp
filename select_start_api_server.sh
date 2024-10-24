@@ -41,7 +41,7 @@ else
     echo "1. $(basename "$CONFIG_FILE1")"
     echo "2. $(basename "$CONFIG_FILE2")"
     echo "3. $(basename "$CONFIG_FILE3")"
-    echo "5. $(basename "$CONFIG_FILE4")"
+    echo "4. $(basename "$CONFIG_FILE4")"
     echo
     read -p "Enter your choice (1-4): " CHOICE
 
